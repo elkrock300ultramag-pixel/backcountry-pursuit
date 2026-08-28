@@ -1,0 +1,15 @@
+{
+  "brand": {
+    "name": "Backcountry Pursuit",
+    "tagline": "Gear. Tactics. Time Outside.",
+    "domain": "https://backcountry-pursuit.com"
+  },
+  "homepage": {
+    "hero_eyebrow": "Western hunting \u2022 fishing \u2022 backcountry living",
+    "hero_title": "Gear. Tactics. Time Outside.",
+    "hero_copy": "Practical advice for hunters, anglers, campers, and anyone who would rather be outside."
+  },
+  "editorial": {
+    "principle": "Recommend gear because it solves a real problem\u2014not because it has the biggest marketing budget."
+  }
+}
