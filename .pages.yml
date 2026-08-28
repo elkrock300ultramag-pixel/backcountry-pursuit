@@ -72,3 +72,16 @@ content:
         format: code
         operations:
           delete: false
+      - name: articles
+        label: Articles
+        type: collection
+        path: articles
+        fields:
+          - name: title
+            label: Title
+            type: string
+            required: true
+    
+          - name: body
+            label: Article
+            type: rich-text
