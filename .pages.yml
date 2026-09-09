@@ -76,11 +76,12 @@ content:
   - name: articles
     label: Articles
     type: collection
-    path: articles
-    format: code
-    filename: "{primary}.html"
+    path: content/articles
+    format: yaml-frontmatter
+    filename: "{primary}.md"
     view:
       primary: title
+      fields: [category]
     fields:
       - name: title
         label: Title
@@ -107,10 +108,10 @@ content:
       - name: description
         label: Short Description
         type: text
+        required: true
 
       - name: body
         label: Article
         type: rich-text
         options:
           format: html
-  
