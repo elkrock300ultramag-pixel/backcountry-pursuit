@@ -14,6 +14,39 @@ const CATEGORY_PAGES = [
   { category: 'Family Outdoors', file: 'guides.html', key: 'FAMILY-OUTDOORS', heading: 'Latest Family Outdoors Articles' }
 ];
 
+const RELATED_STORIES = {
+  Hunting: [
+    { title: 'September Elk Tactics', href: 'september-elk-tactics.html', tag: 'Elk Tactics', description: 'Match your calling, movement, and setup to the phase of the rut.' },
+    { title: 'Find Elk After Pressure', href: 'find-elk-after-pressure.html', tag: 'Elk Hunting', description: 'Relocate elk when hunting pressure changes how the mountain behaves.' },
+    { title: 'Elk Hunting Gear Checklist', href: 'elk-hunting-gear-checklist.html', tag: 'Gear Checklist', description: 'The essential pack, clothing, optics, kill-kit, and emergency gear.' }
+  ],
+  Fishing: [
+    { title: 'Reading Mountain Streams', href: 'reading-mountain-streams.html', tag: 'Trout', description: 'Find holding water by reading current, depth, cover, and temperature.' },
+    { title: 'Simple Trout Kit', href: 'simple-trout-kit.html', tag: 'Fishing Gear', description: 'A practical setup for mountain streams and simple days on the water.' },
+    { title: 'Getting Kids Into Fishing', href: 'getting-kids-into-fishing.html', tag: 'Family Outdoors', description: 'Keep fishing trips fun, simple, and built around the experience.' }
+  ],
+  Camping: [
+    { title: 'Backcountry Elk Camp', href: 'backcountry-elk-camp.html', tag: 'Camp System', description: 'Build a camp that helps you recover and keeps you mobile.' },
+    { title: 'Cold Weather Sleep System', href: 'cold-weather-sleep-system.html', tag: 'Sleep System', description: 'Layer your shelter and sleep gear for colder nights outside.' },
+    { title: 'Camp Food Basics', href: 'camp-food-basics.html', tag: 'Camp Food', description: 'Simple food planning for long days and limited camp time.' }
+  ],
+  Survival: [
+    { title: 'Backcountry Emergency Kit', href: 'backcountry-emergency-kit.html', tag: 'Emergency Gear', description: 'Build a compact kit around the problems that actually matter.' },
+    { title: 'Backcountry Navigation Basics', href: 'backcountry-navigation-basics.html', tag: 'Navigation', description: 'Simple habits for staying oriented when country gets confusing.' },
+    { title: 'Fire Starting in Wet Weather', href: 'fire-starting-wet-weather.html', tag: 'Fire', description: 'Improve your odds of getting a fire going when everything is damp.' }
+  ],
+  Gear: [
+    { title: 'Best Elk Hunting Packs', href: 'best-elk-hunting-packs.html', tag: 'Hunting Packs', description: 'What matters when a pack has to carry camp in and meat out.' },
+    { title: 'Backcountry Boot Guide', href: 'backcountry-boot-guide.html', tag: 'Boots', description: 'Support, durability, fit, and the details that matter in rough country.' },
+    { title: 'Western Hunting Optics', href: 'western-hunting-optics.html', tag: 'Optics', description: 'A practical breakdown of binoculars and glass for western hunting.' }
+  ],
+  'Family Outdoors': [
+    { title: 'Getting Kids Into Fishing', href: 'getting-kids-into-fishing.html', tag: 'Family Outdoors', description: 'Keep outdoor time fun enough that kids want to come back.' },
+    { title: 'Simple Trout Kit', href: 'simple-trout-kit.html', tag: 'Fishing', description: 'A straightforward setup for uncomplicated family fishing trips.' },
+    { title: 'Backcountry Water Plan', href: 'backcountry-water-plan.html', tag: 'Backcountry', description: 'Plan water before the trip so hydration never becomes the problem.' }
+  ]
+};
+
 function escapeHtml(value = '') {
   return String(value)
     .replaceAll('&', '&amp;')
@@ -81,7 +114,13 @@ function normalizedImagePath(image, fromArticle = false) {
 
 function imageMarkup(image, title) {
   if (!image) return '';
-  return `<div class="container"><img class="guide-photo" src="${escapeHtml(normalizedImagePath(image, true))}" alt="${escapeHtml(title)}"></div>`;
+  return `<div class="article-cover"><img src="${escapeHtml(normalizedImagePath(image, true))}" alt="${escapeHtml(title)}"></div>`;
+}
+
+function relatedStoriesMarkup(category) {
+  const stories = RELATED_STORIES[category] || RELATED_STORIES.Hunting;
+  const cards = stories.map(story => `<a class="article-more-card no-image" href="${story.href}"><div class="story-body"><span class="tag">${escapeHtml(story.tag.toUpperCase())}</span><h3>${escapeHtml(story.title)}</h3><p>${escapeHtml(story.description)}</p></div></a>`).join('');
+  return `<section class="article-more"><div class="container"><div class="section-heading"><div><p class="eyebrow">Keep Reading</p><h2>More From Backcountry Pursuit</h2></div><a class="text-link" href="../${categoryLink(category)}">Explore ${escapeHtml(category)} →</a></div><div class="article-more-grid">${cards}</div></div></section>`;
 }
 
 function renderArticle(meta, body, slug) {
@@ -90,13 +129,15 @@ function renderArticle(meta, body, slug) {
   const description = meta.description || '';
   const catHref = categoryLink(category);
   const image = imageMarkup(meta.image, title);
+  const related = relatedStoriesMarkup(category);
   const year = new Date().getUTCFullYear();
   return `<!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="${escapeHtml(description)}"><title>${escapeHtml(title)} | Backcountry Pursuit</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="../styles.css"></head><body>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="${escapeHtml(description)}"><title>${escapeHtml(title)} | Backcountry Pursuit</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="../styles.css"><link rel="stylesheet" href="../article.css"></head><body class="article-page">
 <header class="site-header"><div class="container nav-wrap"><a class="brand" href="../index.html"><span class="brand-mark">BP</span><span><strong>BACKCOUNTRY</strong><small>PURSUIT</small></span></a><button class="menu-toggle" aria-label="Open menu">☰</button><nav class="main-nav"><a href="../hunting.html">Hunting</a><a href="../fishing.html">Fishing</a><a href="../camping.html">Camping</a><a href="../gear.html">Gear Reviews</a><a href="../survival.html">Survival</a><a href="../about.html">About</a><a href="../guides.html">Field Guides</a></nav></div></header>
 <section class="page-hero"><div class="container"><div class="breadcrumbs"><a href="../index.html">Home</a> / <a href="../${catHref}">${escapeHtml(category)}</a> / ${escapeHtml(title)}</div><p class="eyebrow">${escapeHtml(category.toUpperCase())}</p><h1>${escapeHtml(title)}</h1><p class="article-hero-note">${escapeHtml(description)}</p></div></section>
 ${image}
-<section class="section"><div class="container prose"><div class="article-meta">Backcountry Pursuit • ${escapeHtml(category)}</div>${body}</div></section>
+<section class="section article-section"><div class="container prose"><div class="article-meta">Backcountry Pursuit • ${escapeHtml(category)}</div>${body}</div></section>
+${related}
 <footer class="site-footer"><div class="container"><div class="footer-v6"><div><a class="brand" href="../index.html"><span class="brand-mark">BP</span><span><strong>BACKCOUNTRY</strong><small>PURSUIT</small></span></a><p>Western hunting, fishing, camping, survival, family outdoor stories, and gear guidance built around real days outside.</p></div><div class="footer-links"><h4>Explore</h4><a href="../hunting.html">Hunting</a><a href="../fishing.html">Fishing</a><a href="../camping.html">Camping</a><a href="../survival.html">Survival</a><a href="../gear.html">Gear Reviews</a></div><div class="footer-links"><h4>Backcountry Pursuit</h4><a href="../about.html">About</a><a href="../guides.html">Field Guides</a><a href="../contact.html">Contact</a><a href="../privacy.html">Privacy</a><p class="affiliate-note">Some links may be affiliate links. We may earn a commission at no additional cost to you.</p></div></div><div class="footer-bottom">© ${year} Backcountry Pursuit. Built for the next ridge.</div></div></footer><script src="../app.js"></script></body></html>\n`;
 }
 
