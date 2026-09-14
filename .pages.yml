@@ -1,6 +1,6 @@
 media:
-  input: .
-  output: /
+  input: media
+  output: /media
   categories: [image]
   rename: safe
 
