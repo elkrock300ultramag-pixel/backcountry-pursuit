@@ -96,6 +96,58 @@ content:
           - { name: big3_link_label, label: Big Game Card 3 Link Text, type: string }
           - { name: big3_link_url, label: Big Game Card 3 Link Address, type: string }
 
+      - name: fishing-content
+        label: Fishing Page Content
+        type: file
+        path: content/pages/fishing.yml
+        fields:
+          - { name: hero_eyebrow, label: Hero Small Heading, type: string }
+          - { name: hero_title, label: Hero Main Heading, type: string }
+          - { name: hero_text, label: Hero Description, type: text }
+          - { name: section_eyebrow, label: River Section Small Heading, type: string }
+          - { name: section_title, label: River Section Heading, type: string }
+          - { name: card1_image, label: River Card 1 Photo, type: image }
+          - { name: card1_tag, label: River Card 1 Tag, type: string }
+          - { name: card1_title, label: River Card 1 Title, type: string }
+          - { name: card1_text, label: River Card 1 Description, type: text }
+          - { name: card1_link_label, label: River Card 1 Link Text, type: string }
+          - { name: card1_link_url, label: River Card 1 Link Address, type: string }
+          - { name: card2_image, label: River Card 2 Photo, type: image }
+          - { name: card2_tag, label: River Card 2 Tag, type: string }
+          - { name: card2_title, label: River Card 2 Title, type: string }
+          - { name: card2_text, label: River Card 2 Description, type: text }
+          - { name: card2_link_label, label: River Card 2 Link Text, type: string }
+          - { name: card2_link_url, label: River Card 2 Link Address, type: string }
+          - { name: card3_image, label: River Card 3 Photo, type: image }
+          - { name: card3_tag, label: River Card 3 Tag, type: string }
+          - { name: card3_title, label: River Card 3 Title, type: string }
+          - { name: card3_text, label: River Card 3 Description, type: text }
+          - { name: gallery_eyebrow, label: Gallery Small Heading, type: string }
+          - { name: gallery_title, label: Gallery Heading, type: string }
+          - { name: gallery1_image, label: Gallery Photo 1, type: image }
+          - { name: gallery1_caption, label: Gallery Photo 1 Caption, type: string }
+          - { name: gallery2_image, label: Gallery Photo 2, type: image }
+          - { name: gallery2_caption, label: Gallery Photo 2 Caption, type: string }
+          - { name: gallery3_image, label: Gallery Photo 3, type: image }
+          - { name: gallery3_caption, label: Gallery Photo 3 Caption, type: string }
+          - { name: gallery4_image, label: Gallery Photo 4, type: image }
+          - { name: gallery4_caption, label: Gallery Photo 4 Caption, type: string }
+          - { name: article1_tag, label: Info Card 1 Tag, type: string }
+          - { name: article1_title, label: Info Card 1 Title, type: string }
+          - { name: article1_text, label: Info Card 1 Description, type: text }
+          - { name: article2_tag, label: Info Card 2 Tag, type: string }
+          - { name: article2_title, label: Info Card 2 Title, type: string }
+          - { name: article2_text, label: Info Card 2 Description, type: text }
+          - { name: article3_tag, label: Info Card 3 Tag, type: string }
+          - { name: article3_title, label: Info Card 3 Title, type: string }
+          - { name: article3_text, label: Info Card 3 Description, type: text }
+          - { name: article3_link_label, label: Info Card 3 Link Text, type: string }
+          - { name: article3_link_url, label: Info Card 3 Link Address, type: string }
+          - { name: sidebar1_title, label: Sidebar Box 1 Heading, type: string }
+          - { name: sidebar1_text, label: Sidebar Box 1 Text, type: text }
+          - { name: sidebar2_title, label: Sidebar Box 2 Heading, type: string }
+          - { name: sidebar2_text, label: Sidebar Box 2 Text, type: text }
+
   - name: articles
     label: Articles & Stories
     type: collection
