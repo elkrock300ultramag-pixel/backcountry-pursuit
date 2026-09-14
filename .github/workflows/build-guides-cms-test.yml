@@ -7,6 +7,7 @@ on:
     paths:
       - 'content/guides/**'
       - 'scripts/build-guides.js'
+      - 'scripts/fill-placeholder-guides.js'
       - '.github/workflows/build-guides-cms-test.yml'
 
 permissions:
@@ -19,16 +20,18 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: cms-test
+      - name: Fill migrated placeholder guides
+        run: node scripts/fill-placeholder-guides.js
       - name: Build guide pages
         run: node scripts/build-guides.js
-      - name: Commit generated guide pages
+      - name: Commit guide sources and generated pages
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add '*.html'
+          git add content/guides/*.md '*.html'
           if git diff --cached --quiet; then
             echo "No generated guide changes."
             exit 0
           fi
-          git commit -m "Build editable CMS guide pages"
+          git commit -m "Complete editable CMS guide content"
           git push
