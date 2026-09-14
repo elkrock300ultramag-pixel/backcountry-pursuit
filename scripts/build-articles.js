@@ -119,7 +119,7 @@ function imageMarkup(image, title) {
 
 function relatedStoriesMarkup(category) {
   const stories = RELATED_STORIES[category] || RELATED_STORIES.Hunting;
-  const cards = stories.map(story => `<a class="article-more-card no-image" href="${story.href}"><div class="story-body"><span class="tag">${escapeHtml(story.tag.toUpperCase())}</span><h3>${escapeHtml(story.title)}</h3><p>${escapeHtml(story.description)}</p></div></a>`).join('');
+  const cards = stories.map(story => `<a class="article-more-card no-image" href="../${story.href}"><div class="story-body"><span class="tag">${escapeHtml(story.tag.toUpperCase())}</span><h3>${escapeHtml(story.title)}</h3><p>${escapeHtml(story.description)}</p></div></a>`).join('');
   return `<section class="article-more"><div class="container"><div class="section-heading"><div><p class="eyebrow">Keep Reading</p><h2>More From Backcountry Pursuit</h2></div><a class="text-link" href="../${categoryLink(category)}">Explore ${escapeHtml(category)} →</a></div><div class="article-more-grid">${cards}</div></div></section>`;
 }
 
