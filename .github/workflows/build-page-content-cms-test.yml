@@ -6,6 +6,7 @@ on:
     paths:
       - 'content/pages/**'
       - 'scripts/build-page-content.js'
+      - 'scripts/build-home-content.js'
       - 'scripts/finish-cms-test.js'
       - '.github/workflows/build-page-content-cms-test.yml'
 
@@ -23,6 +24,8 @@ jobs:
         run: node scripts/finish-cms-test.js
       - name: Build editable pages
         run: node scripts/build-page-content.js
+      - name: Build editable Home page
+        run: node scripts/build-home-content.js
       - name: Commit generated pages and CMS wiring
         run: |
           git config user.name "github-actions[bot]"
