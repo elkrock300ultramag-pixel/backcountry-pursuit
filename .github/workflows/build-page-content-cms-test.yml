@@ -1,0 +1,33 @@
+name: Build editable website pages
+
+on:
+  push:
+    branches: [cms-test]
+    paths:
+      - 'content/pages/**'
+      - 'scripts/build-page-content.js'
+      - '.github/workflows/build-page-content-cms-test.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: cms-test
+      - name: Build editable pages
+        run: node scripts/build-page-content.js
+      - name: Commit generated pages
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add hunting.html fishing.html
+          if git diff --cached --quiet; then
+            echo "No generated page changes."
+            exit 0
+          fi
+          git commit -m "Build website pages from CMS content"
+          git push
