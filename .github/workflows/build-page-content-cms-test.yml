@@ -5,9 +5,13 @@ on:
     branches: [cms-test]
     paths:
       - 'content/pages/**'
+      - 'content/guides/**'
       - 'scripts/build-page-content.js'
       - 'scripts/build-home-content.js'
+      - 'scripts/build-articles.js'
       - 'scripts/finish-cms-test.js'
+      - 'scripts/verify-site.js'
+      - '.pages.yml'
       - '.github/workflows/build-page-content-cms-test.yml'
 
 permissions:
@@ -26,6 +30,8 @@ jobs:
         run: node scripts/build-page-content.js
       - name: Build editable Home page
         run: node scripts/build-home-content.js
+      - name: Verify CMS test site
+        run: node scripts/verify-site.js
       - name: Commit generated pages and CMS wiring
         run: |
           git config user.name "github-actions[bot]"
