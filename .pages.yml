@@ -148,23 +148,141 @@ content:
           - { name: sidebar2_title, label: Sidebar Box 2 Heading, type: string }
           - { name: sidebar2_text, label: Sidebar Box 2 Text, type: text }
 
+      - name: camping-content
+        label: Camping Page Content
+        type: file
+        path: content/pages/camping.yml
+        fields:
+          - { name: hero_eyebrow, label: Hero Small Heading, type: string }
+          - { name: hero_title, label: Hero Main Heading, type: string }
+          - { name: hero_text, label: Hero Description, type: text }
+          - { name: card1_tag, label: Guide 1 Tag, type: string }
+          - { name: card1_title, label: Guide 1 Title, type: string }
+          - { name: card1_text, label: Guide 1 Description, type: text }
+          - { name: card1_link_label, label: Guide 1 Link Text, type: string }
+          - { name: card1_link_url, label: Guide 1 Link Address, type: string }
+          - { name: card2_tag, label: Guide 2 Tag, type: string }
+          - { name: card2_title, label: Guide 2 Title, type: string }
+          - { name: card2_text, label: Guide 2 Description, type: text }
+          - { name: card2_link_label, label: Guide 2 Link Text, type: string }
+          - { name: card2_link_url, label: Guide 2 Link Address, type: string }
+          - { name: card3_tag, label: Guide 3 Tag, type: string }
+          - { name: card3_title, label: Guide 3 Title, type: string }
+          - { name: card3_text, label: Guide 3 Description, type: text }
+          - { name: card3_link_label, label: Guide 3 Link Text, type: string }
+          - { name: card3_link_url, label: Guide 3 Link Address, type: string }
+          - { name: sidebar1_title, label: Sidebar 1 Heading, type: string }
+          - { name: sidebar1_text, label: Sidebar 1 Text, type: text }
+          - { name: sidebar2_title, label: Sidebar 2 Heading, type: string }
+          - { name: sidebar2_text, label: Sidebar 2 Text, type: text }
+          - { name: feature_image, label: Camp Feature Photo, type: image }
+          - { name: feature_eyebrow, label: Camp Feature Small Heading, type: string }
+          - { name: feature_title, label: Camp Feature Heading, type: string }
+          - { name: feature_text, label: Camp Feature Description, type: text }
+          - { name: feature_button_label, label: Camp Feature Button Text, type: string }
+          - { name: feature_button_url, label: Camp Feature Button Address, type: string }
+
+      - name: survival-content
+        label: Survival Page Content
+        type: file
+        path: content/pages/survival.yml
+        fields:
+          - { name: hero_eyebrow, label: Hero Small Heading, type: string }
+          - { name: hero_title, label: Hero Main Heading, type: string }
+          - { name: hero_text, label: Hero Description, type: text }
+          - { name: card1_tag, label: Guide 1 Tag, type: string }
+          - { name: card1_title, label: Guide 1 Title, type: string }
+          - { name: card1_text, label: Guide 1 Description, type: text }
+          - { name: card1_link_label, label: Guide 1 Link Text, type: string }
+          - { name: card1_link_url, label: Guide 1 Link Address, type: string }
+          - { name: card2_tag, label: Guide 2 Tag, type: string }
+          - { name: card2_title, label: Guide 2 Title, type: string }
+          - { name: card2_text, label: Guide 2 Description, type: text }
+          - { name: card2_link_label, label: Guide 2 Link Text, type: string }
+          - { name: card2_link_url, label: Guide 2 Link Address, type: string }
+          - { name: card3_tag, label: Guide 3 Tag, type: string }
+          - { name: card3_title, label: Guide 3 Title, type: string }
+          - { name: card3_text, label: Guide 3 Description, type: text }
+          - { name: card3_link_label, label: Guide 3 Link Text, type: string }
+          - { name: card3_link_url, label: Guide 3 Link Address, type: string }
+          - { name: sidebar1_title, label: Sidebar 1 Heading, type: string }
+          - { name: sidebar1_text, label: Sidebar 1 Text, type: text }
+          - { name: sidebar2_title, label: Sidebar 2 Heading, type: string }
+          - { name: sidebar2_text, label: Sidebar 2 Text, type: text }
+
+      - name: gear-content
+        label: Gear Page Content
+        type: file
+        path: content/pages/gear.yml
+        fields:
+          - { name: hero_eyebrow, label: Hero Small Heading, type: string }
+          - { name: hero_title, label: Hero Main Heading, type: string }
+          - { name: hero_text, label: Hero Description, type: text }
+          - { name: section_eyebrow, label: Buying Guides Small Heading, type: string }
+          - { name: section_title, label: Buying Guides Heading, type: string }
+          - { name: section_intro, label: Buying Guides Introduction, type: text }
+          - { name: affiliate_text, label: Affiliate Disclosure, type: text }
+          - { name: pack_heading, label: Pack Section Heading, type: string }
+          - { name: pack1_tag, label: Pack 1 Tag, type: string }
+          - { name: pack1_title, label: Pack 1 Title, type: string }
+          - { name: pack1_text, label: Pack 1 Description, type: text }
+          - { name: pack1_bullets, label: Pack 1 Bullets (separate with |), type: text }
+          - { name: pack1_button, label: Pack 1 Button, type: string }
+          - { name: pack1_url, label: Pack 1 Link Address, type: string }
+          - { name: pack2_tag, label: Pack 2 Tag, type: string }
+          - { name: pack2_title, label: Pack 2 Title, type: string }
+          - { name: pack2_text, label: Pack 2 Description, type: text }
+          - { name: pack2_bullets, label: Pack 2 Bullets (separate with |), type: text }
+          - { name: pack2_button, label: Pack 2 Button, type: string }
+          - { name: pack2_url, label: Pack 2 Link Address, type: string }
+          - { name: pack3_tag, label: Pack 3 Tag, type: string }
+          - { name: pack3_title, label: Pack 3 Title, type: string }
+          - { name: pack3_text, label: Pack 3 Description, type: text }
+          - { name: pack3_bullets, label: Pack 3 Bullets (separate with |), type: text }
+          - { name: pack3_button, label: Pack 3 Button, type: string }
+          - { name: pack3_url, label: Pack 3 Link Address, type: string }
+          - { name: boots_heading, label: Boots Section Heading, type: string }
+          - { name: boots1_tag, label: Boots Card 1 Tag, type: string }
+          - { name: boots1_title, label: Boots Card 1 Title, type: string }
+          - { name: boots1_text, label: Boots Card 1 Description, type: text }
+          - { name: boots1_link, label: Boots Card 1 Link Text, type: string }
+          - { name: boots1_url, label: Boots Card 1 Link Address, type: string }
+          - { name: boots2_tag, label: Boots Card 2 Tag, type: string }
+          - { name: boots2_title, label: Boots Card 2 Title, type: string }
+          - { name: boots2_text, label: Boots Card 2 Description, type: text }
+          - { name: boots2_link, label: Boots Card 2 Link Text, type: string }
+          - { name: boots2_url, label: Boots Card 2 Link Address, type: string }
+          - { name: optics_heading, label: Optics Section Heading, type: string }
+          - { name: optics1_tag, label: Optics Card 1 Tag, type: string }
+          - { name: optics1_title, label: Optics Card 1 Title, type: string }
+          - { name: optics1_text, label: Optics Card 1 Description, type: text }
+          - { name: optics1_link, label: Optics Card 1 Link Text, type: string }
+          - { name: optics1_url, label: Optics Card 1 Link Address, type: string }
+          - { name: optics2_tag, label: Optics Card 2 Tag, type: string }
+          - { name: optics2_title, label: Optics Card 2 Title, type: string }
+          - { name: optics2_text, label: Optics Card 2 Description, type: text }
+          - { name: optics2_link, label: Optics Card 2 Link Text, type: string }
+          - { name: optics2_url, label: Optics Card 2 Link Address, type: string }
+          - { name: review_eyebrow, label: Review Standard Small Heading, type: string }
+          - { name: review_title, label: Review Standard Heading, type: string }
+          - { name: review_text, label: Review Standard Description, type: text }
+          - { name: review_button, label: Review Standard Button, type: string }
+          - { name: review_url, label: Review Standard Link Address, type: string }
+
   - name: articles
     label: Articles & Stories
     type: collection
     path: content/articles
     format: yaml-frontmatter
     filename: "{primary}.md"
-    view:
-      primary: title
-      fields: [category]
+    view: { primary: title, fields: [category] }
     fields:
       - { name: title, label: Title, type: string, required: true }
       - name: category
         label: Category
         type: select
         required: true
-        options:
-          values: [Hunting, Fishing, Camping, Survival, Gear, Family Outdoors]
+        options: { values: [Hunting, Fishing, Camping, Survival, Gear, Family Outdoors] }
       - { name: image, label: Main Photo, type: image }
       - { name: description, label: Short Description, type: text, required: true }
       - name: body
@@ -178,17 +296,14 @@ content:
     path: content/guides
     format: yaml-frontmatter
     filename: "{primary}.md"
-    view:
-      primary: title
-      fields: [category]
+    view: { primary: title, fields: [category] }
     fields:
       - { name: title, label: Title, type: string, required: true }
       - name: category
         label: Category
         type: select
         required: true
-        options:
-          values: [Hunting, Fishing, Camping, Survival, Gear, Family Outdoors]
+        options: { values: [Hunting, Fishing, Camping, Survival, Gear, Family Outdoors] }
       - { name: image, label: Main Photo, type: image }
       - { name: description, label: Short Description, type: text, required: true }
       - { name: legacy_path, label: Website Address, type: string, required: true }
