@@ -6,8 +6,10 @@ on:
     paths:
       - 'content/pages/**'
       - 'content/guides/**'
+      - 'content/articles/**'
       - 'scripts/build-page-content.js'
       - 'scripts/build-home-content.js'
+      - 'scripts/build-guides.js'
       - 'scripts/build-articles.js'
       - 'scripts/finish-cms-test.js'
       - 'scripts/verify-site.js'
@@ -28,6 +30,10 @@ jobs:
         run: node scripts/finish-cms-test.js
       - name: Build editable pages
         run: node scripts/build-page-content.js
+      - name: Build editable guides
+        run: node scripts/build-guides.js
+      - name: Build CMS articles
+        run: node scripts/build-articles.js
       - name: Build editable Home page
         run: node scripts/build-home-content.js
       - name: Verify CMS test site
@@ -36,7 +42,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add .pages.yml scripts/build-articles.js index.html hunting.html fishing.html camping.html survival.html gear.html guides.html about.html contact.html privacy.html
+          git add .pages.yml scripts/build-articles.js articles index.html hunting.html fishing.html camping.html survival.html gear.html guides.html about.html contact.html privacy.html '*.html'
           if git diff --cached --quiet; then
             echo "No generated page changes."
             exit 0
