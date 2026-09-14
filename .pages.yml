@@ -51,7 +51,7 @@ content:
         format: code
         operations:
           delete: false
-      - name: guides
+      - name: guides-page
         label: Field Guides Page
         type: file
         path: guides.html
@@ -119,45 +119,45 @@ content:
         options:
           format: html
 
-  - name: hunting-guides
-    label: Hunting Guides
-    type: group
-    items:
-      - { name: september-elk, label: September Elk Tactics, type: file, path: september-elk-tactics.html, format: code, operations: { delete: false } }
-      - { name: pressured-elk, label: Find Elk After Pressure, type: file, path: find-elk-after-pressure.html, format: code, operations: { delete: false } }
-      - { name: elk-calling, label: Elk Calling Plan, type: file, path: elk-calling-plan.html, format: code, operations: { delete: false } }
-      - { name: elk-gear, label: Elk Hunting Gear Checklist, type: file, path: elk-hunting-gear-checklist.html, format: code, operations: { delete: false } }
-      - { name: elk-packout, label: Elk Pack-Out Planning, type: file, path: elk-packout-planning.html, format: code, operations: { delete: false } }
-      - { name: mule-glassing, label: Mule Deer Glassing System, type: file, path: mule-deer-glassing-system.html, format: code, operations: { delete: false } }
-      - { name: mule-basics, label: Mule Deer Glassing Basics, type: file, path: mule-deer-glassing-basics.html, format: code, operations: { delete: false } }
-      - { name: bow-elk, label: Bowhunting Elk Setup, type: file, path: bowhunting-elk-setup.html, format: code, operations: { delete: false } }
-
-  - name: gear-guides
-    label: Gear Guides
-    type: group
-    items:
-      - { name: elk-packs, label: Best Elk Hunting Packs, type: file, path: best-elk-hunting-packs.html, format: code, operations: { delete: false } }
-      - { name: boot-guide, label: Backcountry Boot Guide, type: file, path: backcountry-boot-guide.html, format: code, operations: { delete: false } }
-      - { name: optics, label: Western Hunting Optics, type: file, path: western-hunting-optics.html, format: code, operations: { delete: false } }
-      - { name: review-method, label: Gear Review Method, type: file, path: gear-review-method.html, format: code, operations: { delete: false } }
-
-  - name: camping-survival-guides
-    label: Camping & Survival Guides
-    type: group
-    items:
-      - { name: elk-camp, label: Backcountry Elk Camp, type: file, path: backcountry-elk-camp.html, format: code, operations: { delete: false } }
-      - { name: sleep-system, label: Cold Weather Sleep System, type: file, path: cold-weather-sleep-system.html, format: code, operations: { delete: false } }
-      - { name: camp-food, label: Camp Food Basics, type: file, path: camp-food-basics.html, format: code, operations: { delete: false } }
-      - { name: emergency-kit, label: Backcountry Emergency Kit, type: file, path: backcountry-emergency-kit.html, format: code, operations: { delete: false } }
-      - { name: navigation, label: Backcountry Navigation Basics, type: file, path: backcountry-navigation-basics.html, format: code, operations: { delete: false } }
-      - { name: shelter, label: Backcountry Shelter Guide, type: file, path: backcountry-shelter-guide.html, format: code, operations: { delete: false } }
-      - { name: water, label: Backcountry Water Plan, type: file, path: backcountry-water-plan.html, format: code, operations: { delete: false } }
-      - { name: wet-fire, label: Fire Starting in Wet Weather, type: file, path: fire-starting-wet-weather.html, format: code, operations: { delete: false } }
-
-  - name: fishing-family-guides
-    label: Fishing & Family Guides
-    type: group
-    items:
-      - { name: streams, label: Reading Mountain Streams, type: file, path: reading-mountain-streams.html, format: code, operations: { delete: false } }
-      - { name: trout-kit, label: Simple Trout Kit, type: file, path: simple-trout-kit.html, format: code, operations: { delete: false } }
-      - { name: kids-fishing, label: Getting Kids Into Fishing, type: file, path: getting-kids-into-fishing.html, format: code, operations: { delete: false } }
+  - name: guides
+    label: Field Guides
+    type: collection
+    path: content/guides
+    format: yaml-frontmatter
+    filename: "{primary}.md"
+    view:
+      primary: title
+      fields: [category]
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: category
+        label: Category
+        type: select
+        required: true
+        options:
+          values:
+            - Hunting
+            - Fishing
+            - Camping
+            - Survival
+            - Gear
+            - Family Outdoors
+      - name: image
+        label: Main Photo
+        type: image
+      - name: description
+        label: Short Description
+        type: text
+        required: true
+      - name: legacy_path
+        label: Website Address
+        type: string
+        required: true
+      - name: body
+        label: Guide Content
+        type: rich-text
+        options:
+          format: html
