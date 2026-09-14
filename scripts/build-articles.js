@@ -137,6 +137,46 @@ function updateCategoryPage(config, articles) {
   console.log(`Updated ${config.file}.`);
 }
 
+function renderHomeFeatureCard(article, index) {
+  const title = article.data.title || article.slug.replace(/-/g, ' ');
+  const category = article.data.category || 'Field Story';
+  const description = article.data.description || '';
+  const src = normalizedImagePath(article.data.image, false);
+  const classes = index === 0 ? 'feature-card feature-card-large' : 'feature-card';
+  const style = src ? ` style="background-image:url('${escapeHtml(src)}');background-size:cover;background-position:center"` : '';
+  const summary = index === 0 && description ? `<p>${escapeHtml(description)}</p>` : '';
+  return `<article class="${classes}"${style}><div class="card-shade"></div><div class="card-content"><span class="tag">${escapeHtml(category.toUpperCase())}</span><h3>${escapeHtml(title)}</h3>${summary}<a href="articles/${article.slug}.html">Read the story →</a></div></article>`;
+}
+
+function homeFeaturedSection(articles) {
+  const featured = [...articles].reverse().slice(0, 3);
+  const cards = featured.map((article, index) => renderHomeFeatureCard(article, index)).join('\n');
+  return `<!-- CMS-HOME-FEATURED-START -->\n<section class="section"><div class="container"><div class="section-heading"><div><p class="eyebrow">Featured Stories</p><h2>From the Backcountry</h2></div></div><div class="feature-grid">\n${cards}\n</div></div></section>\n<!-- CMS-HOME-FEATURED-END -->`;
+}
+
+function updateHomePage(articles) {
+  const pagePath = path.join(ROOT, 'index.html');
+  if (!fs.existsSync(pagePath) || articles.length === 0) return;
+  let html = fs.readFileSync(pagePath, 'utf8');
+  const section = homeFeaturedSection(articles);
+  const cmsStart = '<!-- CMS-HOME-FEATURED-START -->';
+  const cmsEnd = '<!-- CMS-HOME-FEATURED-END -->';
+  if (html.includes(cmsStart) && html.includes(cmsEnd)) {
+    const start = html.indexOf(cmsStart);
+    const end = html.indexOf(cmsEnd, start) + cmsEnd.length;
+    html = `${html.slice(0, start)}${section}${html.slice(end)}`;
+  } else {
+    const startAnchor = '    <section class="section">\n      <div class="container">\n        <div class="section-heading">\n          <div>\n            <p class="eyebrow">Featured</p>\n            <h2>From the Backcountry</h2>';
+    const endAnchor = '    <section class="section"><div class="container"><div class="featured-story">';
+    const start = html.indexOf(startAnchor);
+    const end = html.indexOf(endAnchor, start);
+    if (start === -1 || end === -1) throw new Error('index.html: existing featured section anchors not found');
+    html = `${html.slice(0, start)}${section}\n\n${html.slice(end)}`;
+  }
+  fs.writeFileSync(pagePath, html);
+  console.log('Updated index.html featured stories.');
+}
+
 fs.mkdirSync(CONTENT_DIR, { recursive: true });
 fs.mkdirSync(OUTPUT_DIR, { recursive: true });
 const files = fs.readdirSync(CONTENT_DIR).filter(f => /\.(md|html)$/i.test(f)).sort();
@@ -154,4 +194,5 @@ for (const file of files) {
   console.log(`Built articles/${slug}.html`);
 }
 for (const config of CATEGORY_PAGES) updateCategoryPage(config, articles);
+updateHomePage(articles);
 console.log(`Done. Built ${built} article(s).`);
