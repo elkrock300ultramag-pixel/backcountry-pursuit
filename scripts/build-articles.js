@@ -49,6 +49,14 @@ function parseFrontmatter(text) {
       const chunks = [];
       while (i + 1 < lines.length && /^\s+/.test(lines[i + 1])) chunks.push(lines[++i].trim());
       data[key] = raw === '|' ? chunks.join('\n') : chunks.join(' ');
+    } else if ((raw.startsWith('"') && !raw.endsWith('"')) || (raw.startsWith("'") && !raw.endsWith("'"))) {
+      const quote = raw[0];
+      const chunks = [raw];
+      while (i + 1 < lines.length && /^\s+/.test(lines[i + 1])) {
+        chunks.push(lines[++i].trim());
+        if (chunks[chunks.length - 1].endsWith(quote)) break;
+      }
+      data[key] = unquote(chunks.join(' '));
     } else data[key] = unquote(raw);
   }
   return { data, body };
