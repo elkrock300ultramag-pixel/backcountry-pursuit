@@ -1,0 +1,33 @@
+name: Migrate legacy guides to CMS
+
+on:
+  push:
+    branches:
+      - cms-test
+    paths:
+      - 'scripts/migrate-legacy-guides.js'
+      - '.github/workflows/migrate-cms-test.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: cms-test
+      - name: Convert legacy guides to editable CMS source
+        run: node scripts/migrate-legacy-guides.js
+      - name: Commit CMS guide sources
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add content/guides
+          if git diff --cached --quiet; then
+            echo "No guide migration changes."
+            exit 0
+          fi
+          git commit -m "Migrate legacy guides to CMS"
+          git push
