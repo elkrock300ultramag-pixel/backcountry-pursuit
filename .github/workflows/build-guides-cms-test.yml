@@ -1,0 +1,34 @@
+name: Build editable CMS guides
+
+on:
+  push:
+    branches:
+      - cms-test
+    paths:
+      - 'content/guides/**'
+      - 'scripts/build-guides.js'
+      - '.github/workflows/build-guides-cms-test.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: cms-test
+      - name: Build guide pages
+        run: node scripts/build-guides.js
+      - name: Commit generated guide pages
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add '*.html'
+          if git diff --cached --quiet; then
+            echo "No generated guide changes."
+            exit 0
+          fi
+          git commit -m "Build editable CMS guide pages"
+          git push
