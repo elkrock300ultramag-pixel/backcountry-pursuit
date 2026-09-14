@@ -164,4 +164,44 @@ for (const file of files) {
   built++;
   console.log(`Built articles/${slug}.html`);
 }
+
+const huntingPage = path.join(ROOT, 'hunting.html');
+const huntingArticles = [];
+
+for (const file of files) {
+  const source = fs.readFileSync(path.join(CONTENT_DIR, file), 'utf8');
+  const { data } = parseFrontmatter(source);
+
+  if (data.category !== 'Hunting') continue;
+
+  const slug = slugFromFilename(file);
+  const title = data.title || slug.replace(/-/g, ' ');
+  const description = data.description || '';
+  const image = data.image
+    ? `<img loading="lazy" src="${escapeHtml(data.image)}" alt="${escapeHtml(title)}">`
+    : `<div class="story-thumb">Hunting</div>`;
+
+  huntingArticles.push(`
+<article class="story-card">
+  ${image}
+  <div class="story-body">
+    <span class="tag">HUNTING</span>
+    <h3>${escapeHtml(title)}</h3>
+    <p>${escapeHtml(description)}</p>
+    <a class="text-link" href="articles/${slug}.html">Read article →</a>
+  </div>
+</article>`);
+}
+
+if (fs.existsSync(huntingPage)) {
+  let huntingHtml = fs.readFileSync(huntingPage, 'utf8');
+
+  huntingHtml = huntingHtml.replace(
+    /<!-- CMS-HUNTING-ARTICLES -->[\s\S]*?(?=<\/div>\s*<\/div>\s*<\/section>\s*<!-- CMS-HUNTING-END -->)/,
+    `<!-- CMS-HUNTING-ARTICLES -->\n${huntingArticles.join('\n')}\n    `
+  );
+
+  fs.writeFileSync(huntingPage, huntingHtml);
+  console.log(`Updated hunting.html with ${huntingArticles.length} CMS article(s).`);
+}
 console.log(`Done. Built ${built} article(s).`);
