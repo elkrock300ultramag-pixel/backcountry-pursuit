@@ -5,80 +5,96 @@ media:
   rename: safe
 
 content:
-  - name: site-pages
-    label: Site Pages
+  - name: editable-pages
+    label: Edit Website Pages
     type: group
     items:
-      - name: home
-        label: Home Page
+      - name: hunting-content
+        label: Hunting Page Content
         type: file
-        path: index.html
-        format: code
-        operations:
-          delete: false
-      - name: hunting
-        label: Hunting Page
-        type: file
-        path: hunting.html
-        format: code
-        operations:
-          delete: false
-      - name: fishing
-        label: Fishing Page
-        type: file
-        path: fishing.html
-        format: code
-        operations:
-          delete: false
-      - name: camping
-        label: Camping Page
-        type: file
-        path: camping.html
-        format: code
-        operations:
-          delete: false
-      - name: survival
-        label: Survival Page
-        type: file
-        path: survival.html
-        format: code
-        operations:
-          delete: false
-      - name: gear
-        label: Gear Page
-        type: file
-        path: gear.html
-        format: code
-        operations:
-          delete: false
-      - name: guides-page
-        label: Field Guides Page
-        type: file
-        path: guides.html
-        format: code
-        operations:
-          delete: false
-      - name: about
-        label: About Page
-        type: file
-        path: about.html
-        format: code
-        operations:
-          delete: false
-      - name: contact
-        label: Contact Page
-        type: file
-        path: contact.html
-        format: code
-        operations:
-          delete: false
-      - name: privacy
-        label: Privacy Page
-        type: file
-        path: privacy.html
-        format: code
-        operations:
-          delete: false
+        path: content/pages/hunting.yml
+        fields:
+          - { name: hero_eyebrow, label: Hero Small Heading, type: string }
+          - { name: hero_title, label: Hero Main Heading, type: string }
+          - { name: hero_text, label: Hero Description, type: text }
+          - { name: hub_eyebrow, label: Elk Hub Small Heading, type: string }
+          - { name: hub_title, label: Elk Hub Heading, type: string }
+          - { name: hub_text, label: Elk Hub Description, type: text }
+          - { name: hub_link1_label, label: Elk Hub Link 1 Text, type: string }
+          - { name: hub_link1_url, label: Elk Hub Link 1 Address, type: string }
+          - { name: hub_link2_label, label: Elk Hub Link 2 Text, type: string }
+          - { name: hub_link2_url, label: Elk Hub Link 2 Address, type: string }
+          - { name: hub_link3_label, label: Elk Hub Link 3 Text, type: string }
+          - { name: hub_link3_url, label: Elk Hub Link 3 Address, type: string }
+          - { name: hub_link4_label, label: Elk Hub Link 4 Text, type: string }
+          - { name: hub_link4_url, label: Elk Hub Link 4 Address, type: string }
+          - { name: pack_eyebrow, label: Pack Guide Small Heading, type: string }
+          - { name: pack_title, label: Pack Guide Heading, type: string }
+          - { name: pack_text, label: Pack Guide Description, type: text }
+          - { name: pack_button_label, label: Pack Guide Button Text, type: string }
+          - { name: pack_button_url, label: Pack Guide Button Address, type: string }
+          - { name: field_eyebrow, label: Field Guides Small Heading, type: string }
+          - { name: field_title, label: Field Guides Heading, type: string }
+          - { name: field1_thumb, label: Guide Card 1 Image/Text, type: string }
+          - { name: field1_tag, label: Guide Card 1 Tag, type: string }
+          - { name: field1_title, label: Guide Card 1 Title, type: string }
+          - { name: field1_text, label: Guide Card 1 Description, type: text }
+          - { name: field1_link_label, label: Guide Card 1 Link Text, type: string }
+          - { name: field1_link_url, label: Guide Card 1 Link Address, type: string }
+          - { name: field2_thumb, label: Guide Card 2 Image/Text, type: string }
+          - { name: field2_tag, label: Guide Card 2 Tag, type: string }
+          - { name: field2_title, label: Guide Card 2 Title, type: string }
+          - { name: field2_text, label: Guide Card 2 Description, type: text }
+          - { name: field2_link_label, label: Guide Card 2 Link Text, type: string }
+          - { name: field2_link_url, label: Guide Card 2 Link Address, type: string }
+          - { name: field3_thumb, label: Guide Card 3 Image/Text, type: string }
+          - { name: field3_tag, label: Guide Card 3 Tag, type: string }
+          - { name: field3_title, label: Guide Card 3 Title, type: string }
+          - { name: field3_text, label: Guide Card 3 Description, type: text }
+          - { name: field3_link_label, label: Guide Card 3 Link Text, type: string }
+          - { name: field3_link_url, label: Guide Card 3 Link Address, type: string }
+          - { name: gallery_eyebrow, label: Gallery Small Heading, type: string }
+          - { name: gallery_title, label: Gallery Heading, type: string }
+          - { name: gallery1_image, label: Gallery Photo 1, type: image }
+          - { name: gallery1_caption, label: Gallery Photo 1 Caption, type: string }
+          - { name: gallery2_image, label: Gallery Photo 2, type: image }
+          - { name: gallery2_caption, label: Gallery Photo 2 Caption, type: string }
+          - { name: gallery3_image, label: Gallery Photo 3, type: image }
+          - { name: gallery3_caption, label: Gallery Photo 3 Caption, type: string }
+          - { name: gallery4_image, label: Gallery Photo 4, type: image }
+          - { name: gallery4_caption, label: Gallery Photo 4 Caption, type: string }
+          - { name: after_eyebrow, label: After Shot Small Heading, type: string }
+          - { name: after_title, label: After Shot Heading, type: string }
+          - { name: after1_tag, label: After Shot Card 1 Tag, type: string }
+          - { name: after1_title, label: After Shot Card 1 Title, type: string }
+          - { name: after1_text, label: After Shot Card 1 Description, type: text }
+          - { name: after1_link_label, label: After Shot Card 1 Link Text, type: string }
+          - { name: after1_link_url, label: After Shot Card 1 Link Address, type: string }
+          - { name: after2_tag, label: After Shot Card 2 Tag, type: string }
+          - { name: after2_title, label: After Shot Card 2 Title, type: string }
+          - { name: after2_text, label: After Shot Card 2 Description, type: text }
+          - { name: after2_link_label, label: After Shot Card 2 Link Text, type: string }
+          - { name: after2_link_url, label: After Shot Card 2 Link Address, type: string }
+          - { name: biggame_eyebrow, label: Big Game Small Heading, type: string }
+          - { name: biggame_title, label: Big Game Heading, type: string }
+          - { name: big1_image, label: Big Game Card 1 Photo, type: image }
+          - { name: big1_tag, label: Big Game Card 1 Tag, type: string }
+          - { name: big1_title, label: Big Game Card 1 Title, type: string }
+          - { name: big1_text, label: Big Game Card 1 Description, type: text }
+          - { name: big1_link_label, label: Big Game Card 1 Link Text, type: string }
+          - { name: big1_link_url, label: Big Game Card 1 Link Address, type: string }
+          - { name: big2_image, label: Big Game Card 2 Photo, type: image }
+          - { name: big2_tag, label: Big Game Card 2 Tag, type: string }
+          - { name: big2_title, label: Big Game Card 2 Title, type: string }
+          - { name: big2_text, label: Big Game Card 2 Description, type: text }
+          - { name: big2_link_label, label: Big Game Card 2 Link Text, type: string }
+          - { name: big2_link_url, label: Big Game Card 2 Link Address, type: string }
+          - { name: big3_image, label: Big Game Card 3 Photo, type: image }
+          - { name: big3_tag, label: Big Game Card 3 Tag, type: string }
+          - { name: big3_title, label: Big Game Card 3 Title, type: string }
+          - { name: big3_text, label: Big Game Card 3 Description, type: text }
+          - { name: big3_link_label, label: Big Game Card 3 Link Text, type: string }
+          - { name: big3_link_url, label: Big Game Card 3 Link Address, type: string }
 
   - name: articles
     label: Articles & Stories
@@ -90,34 +106,19 @@ content:
       primary: title
       fields: [category]
     fields:
-      - name: title
-        label: Title
-        type: string
-        required: true
+      - { name: title, label: Title, type: string, required: true }
       - name: category
         label: Category
         type: select
         required: true
         options:
-          values:
-            - Hunting
-            - Fishing
-            - Camping
-            - Survival
-            - Gear
-            - Family Outdoors
-      - name: image
-        label: Main Photo
-        type: image
-      - name: description
-        label: Short Description
-        type: text
-        required: true
+          values: [Hunting, Fishing, Camping, Survival, Gear, Family Outdoors]
+      - { name: image, label: Main Photo, type: image }
+      - { name: description, label: Short Description, type: text, required: true }
       - name: body
         label: Article
         type: rich-text
-        options:
-          format: html
+        options: { format: html }
 
   - name: guides
     label: Field Guides
@@ -129,35 +130,30 @@ content:
       primary: title
       fields: [category]
     fields:
-      - name: title
-        label: Title
-        type: string
-        required: true
+      - { name: title, label: Title, type: string, required: true }
       - name: category
         label: Category
         type: select
         required: true
         options:
-          values:
-            - Hunting
-            - Fishing
-            - Camping
-            - Survival
-            - Gear
-            - Family Outdoors
-      - name: image
-        label: Main Photo
-        type: image
-      - name: description
-        label: Short Description
-        type: text
-        required: true
-      - name: legacy_path
-        label: Website Address
-        type: string
-        required: true
+          values: [Hunting, Fishing, Camping, Survival, Gear, Family Outdoors]
+      - { name: image, label: Main Photo, type: image }
+      - { name: description, label: Short Description, type: text, required: true }
+      - { name: legacy_path, label: Website Address, type: string, required: true }
       - name: body
         label: Guide Content
         type: rich-text
-        options:
-          format: html
+        options: { format: html }
+
+  - name: advanced-pages
+    label: Advanced Page Code
+    type: group
+    items:
+      - { name: home, label: Home Page Code, type: file, path: index.html, format: code, operations: { delete: false } }
+      - { name: hunting, label: Hunting Page Code, type: file, path: hunting.html, format: code, operations: { delete: false } }
+      - { name: fishing, label: Fishing Page Code, type: file, path: fishing.html, format: code, operations: { delete: false } }
+      - { name: camping, label: Camping Page Code, type: file, path: camping.html, format: code, operations: { delete: false } }
+      - { name: survival, label: Survival Page Code, type: file, path: survival.html, format: code, operations: { delete: false } }
+      - { name: gear, label: Gear Page Code, type: file, path: gear.html, format: code, operations: { delete: false } }
+      - { name: guides-page, label: Field Guides Page Code, type: file, path: guides.html, format: code, operations: { delete: false } }
+      - { name: about, label: About Page Code, type: file, path: about.html, format: code, operations: { delete: false } }
