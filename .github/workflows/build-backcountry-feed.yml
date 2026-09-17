@@ -1,0 +1,33 @@
+name: Build From the Backcountry test
+
+on:
+  push:
+    branches: [backcountry-feed]
+    paths:
+      - 'content/backcountry/**'
+      - 'scripts/build-backcountry-updates.js'
+      - '.github/workflows/build-backcountry-feed.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: backcountry-feed
+      - name: Build From the Backcountry
+        run: node scripts/build-backcountry-updates.js
+      - name: Commit generated Backcountry pages
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add from-the-backcountry.html backcountry/
+          if git diff --cached --quiet; then
+            echo "No generated Backcountry changes."
+            exit 0
+          fi
+          git commit -m "Build From the Backcountry updates"
+          git push
